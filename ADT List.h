@@ -1,5 +1,5 @@
 
-#ifndef
+#ifndef ADTList_H
 #define ADTList_H
 
 #include <stdio.h>
@@ -29,18 +29,21 @@ typedef struct {
     address First;
 } ListGedung;
 
-#endif // ADTList_H
+
 
 /*Selektor*/
 #define KompleksG(P) (P)->InfoG.KompleksG
 #define NamaG(P) (P)->InfoG.NamaG
 #define HargaBeliG(P) (P)->InfoG.HargaBeliG
 #define PemilikG(P) (P)->InfoG.PemilikG
-#define NextG(P) (P)->InfoG.NextG
-#define First(L) ((L).First)
+#define NextG(P) (P)->NextG
+#define First(LG) ((LG).First)
+/* ***************** TEST LIST KOSONG ***************** */
+boolean IsListEmpty(ListGedung LG);
+/* Mengirim true jika list kosong */
 
 /* ***************** Pembuatan Papan Let's Get Rich ***************** */
-void CreateKGedung(ListGedung *L);
+void CreateKGedung(ListGedung *LG);
 /*I.S. Gedung terdefinisi */
 /*F.S. Kompleks gedung-gedung seperti sepsifikasi game terbentuk*/
 
@@ -59,6 +62,10 @@ void Dealokasi(address *P);
 
 /* ***************** PRIMITIF BERDASARKAN ALAMAT ***************** */
 /* *** PENAMBAHAN ELEMEN BERDASARKAN ALAMAT *** */
-void InsertLast(List *L, address P);
+void InsertLast(ListGedung *LG, address P);
 /* I.S. Sembarang, P sudah dialokasi */
 /* F.S. P ditambahkan sebagai elemen terakhir yang baru */
+
+address Search(ListGedung *LG, char NamaG[15]);
+
+#endif // ADTList_H
